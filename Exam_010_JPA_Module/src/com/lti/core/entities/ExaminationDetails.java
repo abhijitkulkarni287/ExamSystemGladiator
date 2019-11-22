@@ -16,13 +16,13 @@ public class ExaminationDetails
 	//Attributes for entity
 	@Id
 	@Column(name="EXAM_ID")
-	int examId;
+	private int examId;
 	@Column(name="SUBJECT")
-	String examName;
+	private String examName;
 	@Column(name="EXAM_DURATION")
-	int examDuration;
+	private int examDuration;
 	@Column(name="NO_OF_QUESTIONS")
-	int numberOfQuestions;
+	private int numberOfQuestions;
 	
 	//Constructors
 	public ExaminationDetails() {}
@@ -59,7 +59,5 @@ public class ExaminationDetails
 	public void setNumberOfQuestions(int numberOfQuestions) {
 		this.numberOfQuestions = numberOfQuestions;
 	}
-
-	
 	
 }

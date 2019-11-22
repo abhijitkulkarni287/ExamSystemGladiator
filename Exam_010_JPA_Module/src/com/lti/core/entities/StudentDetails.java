@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*
@@ -23,25 +24,26 @@ public class StudentDetails
 {
 	//Attributes for the entity
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="studentIdGen",sequenceName="studentId_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="studentIdGen")
 	@Column(name="STUDENT_ID")
-	int studentId;
+	private int studentId;
 	@Column(name="FIRST_NAME")
-	String firstName;
+	private String firstName;
 	@Column(name="LAST_NAME")
-	String lastName;
+	private String lastName;
 	@Column(name="DOB")
-	Date dateOfBirth;
+	private Date dateOfBirth;
 	@Column(name="GENDER")
-	String gender;
+	private String gender;
 	@Column(name="EMAIL")
-	String email;
+	private String email;
 	@Column(name="PHONE")
-	long phoneNumber;
+	private int phoneNumber;
 	@Column(name="CITY")
-	String city;
+	private String city;
 	@Column(name="STUDENT_STATE")
-	String state;
+	private String state;
 	
 	//Association Mapping
 	@OneToOne( cascade=CascadeType.ALL)
@@ -50,7 +52,7 @@ public class StudentDetails
 	
 	//Constructors
 	public StudentDetails() {}
-	public StudentDetails(String firstName, String lastName, Date dateOfBirth, String gender,String email, long phoneNumber, String city, String state,LoginDetails login) 
+	public StudentDetails(String firstName, String lastName, Date dateOfBirth, String gender,String email, int phoneNumber, String city, String state,LoginDetails login) 
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -103,7 +105,7 @@ public class StudentDetails
 	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public LoginDetails getLogin() {

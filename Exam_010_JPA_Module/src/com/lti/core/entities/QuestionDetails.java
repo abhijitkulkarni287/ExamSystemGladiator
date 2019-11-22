@@ -40,24 +40,24 @@ public class QuestionDetails
 	@SequenceGenerator(name="qidGen",sequenceName="qid_seq",initialValue=1,allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="qidGen")
 	@Column(name="QUESTION_ID")
-	int questionId;
+	private int questionId;
 	@Column(name="QUESTION")
-	String question;
+	private String question;
 	@Column(name="ANSWER")
-	String correctOption;
+	private String correctOption;
 	@Column(name="DELETED")
-	String deleted;
+	private String deleted;
 
 	//mapping attributes
 	//1)ExaminationDetails table exam_id
 	@OneToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="EXAM_ID")
-	ExaminationDetails exam;
+	private ExaminationDetails exam;
 
 	//2)File table 
 	@ManyToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="FILE_ID")
-	FileDetails fileDetails;
+	private FileDetails fileDetails;
 	
 	//Constructors
 	public QuestionDetails() {}
@@ -68,8 +68,7 @@ public class QuestionDetails
 		this.correctOption = correctOption;
 		this.exam = exam;
 		this.fileDetails = fileDetails;
-	}
-	
+	}	
 
 }
 

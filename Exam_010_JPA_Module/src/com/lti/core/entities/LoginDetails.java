@@ -19,13 +19,14 @@ This entity class will store login details for every student
 public class LoginDetails 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE )      // edit: has to be generated using db seq
+	@SequenceGenerator(name="loginIdGen",sequenceName="loginId_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="loginIdGen")
 	@Column(name="LOGIN_ID")
-	int logintId;
+	private int logintId;
 	@Column(name="USER_NAME")
-	String userName;
+	private String userName;
 	@Column(name="PASSWORD")
-	String password;
+	private String password;
 	
 	//Constructors
 	public LoginDetails() {}

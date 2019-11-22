@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*This entity will store details of question excel file*/
@@ -15,17 +16,16 @@ public class FileDetails
 {
 	@Id
 	@Column(name="FILE_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	int fileId;
+	@SequenceGenerator(name="fileIdGen",sequenceName="fileId_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="fileIdGen")
+	private int fileId;
 	@Column(name="FILE_NAME")
-	String fileName;
-	
+	private String fileName;
 	
 	//Constructors
 	public FileDetails() {}
 	public FileDetails( String fileName) 
 	{
-		//this.fileId = fileId;
 		this.fileName = fileName;
 	}
 	
