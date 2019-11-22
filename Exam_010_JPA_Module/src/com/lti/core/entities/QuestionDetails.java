@@ -63,6 +63,59 @@ public class QuestionDetails
 		this.exam = exam;
 		this.fileDetails = fileDetails;
 	}
+
+	//getters and setters
+	public int getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(int questionId) {
+		this.questionId = questionId;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getCorrectOption() {
+		return correctOption;
+	}
+
+	public void setCorrectOption(String correctOption) {
+		this.correctOption = correctOption;
+	}
+
+	public String getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
+	}
+
+	public ExaminationDetails getExam() {
+		return exam;
+	}
+
+	public void setExam(ExaminationDetails exam) {
+		this.exam = exam;
+	}
+
+	public FileDetails getFileDetails() {
+		return fileDetails;
+	}
+
+	public void setFileDetails(FileDetails fileDetails) {
+		this.fileDetails = fileDetails;
+	}
+	
+	
+	
+	
 	
 
 }

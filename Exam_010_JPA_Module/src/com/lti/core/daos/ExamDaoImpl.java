@@ -1,9 +1,14 @@
 package com.lti.core.daos;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.lti.core.entities.ExaminationDetails;
@@ -13,17 +18,10 @@ import com.lti.core.entities.QuestionDetails;
 @Repository("examDao")
 public class ExamDaoImpl implements ExamDao 
 {
-/*	@PersistenceContext
-	private EntityManager entityManager;
-*/
-	//Insert Question details into Questions table
-	@Override
-	public void insertQuestionDetails(ExaminationDetails examDetails,QuestionDetails questionDetails) 
-	{
-		persistAll(questionDetails);
-	}
+	@Autowired
+	EntityManager entityManager;
 	
-	//Method to 
+
 	public void persistAll(Object ...persistObject)
 	{
 		for(Object obj:persistObject) 
@@ -31,16 +29,16 @@ public class ExamDaoImpl implements ExamDao
 			//entityManager.persist(obj);
 		}
 	}
-	
-	//For testing the methods
-	public static void main(String[] args) 
+
+	@Override
+	public List<ExaminationDetails> fetchExamDetails() 
 	{
-		
-		ExaminationDetails examDetails = new ExaminationDetails(101, "java", 60, 40);
-		FileDetails fileDetails = new FileDetails(1, "javaQuestions.xlsx");
-		QuestionDetails questionDetails = new QuestionDetails(101, "simple language?","java",examDetails,fileDetails);
-		ExamDaoImpl examDaoImpl = new ExamDaoImpl();
-		examDaoImpl.insertQuestionDetails(examDetails,questionDetails);
-		
+		List<ExaminationDetails> examList = new ArrayList<ExaminationDetails>();
+		String selectQueryString="from ExaminationDetails";
+		Query selectQuery = entityManager.createQuery(selectQueryString);
+		examList=selectQuery.getResultList();
+		return examList;
 	}
+	
+	
 }
