@@ -1,5 +1,6 @@
 package com.lti.core.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*
@@ -18,14 +20,15 @@ Entity for storing quetionId and its options
 public class QuestionOptions 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name="optionIdGen",sequenceName="optionId_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="optionIdGen")
 	@Column(name="OPTION_ID")
 	private int optionId; 
 	
 	@Column(name="OPTIONS")
 	private String option;
 	
-	@ManyToOne
+	@ManyToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="QUESTION_ID")
 	private QuestionDetails questionDetails;
 
@@ -54,3 +57,4 @@ public class QuestionOptions
 	}
 
 }
+

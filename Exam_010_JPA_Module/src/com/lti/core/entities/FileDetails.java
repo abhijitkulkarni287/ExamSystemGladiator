@@ -2,9 +2,9 @@ package com.lti.core.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /*This entity will store details of question excel file*/
@@ -15,6 +15,7 @@ public class FileDetails
 {
 	@Id
 	@Column(name="FILE_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	int fileId;
 	@Column(name="FILE_NAME")
 	String fileName;
@@ -22,9 +23,9 @@ public class FileDetails
 	
 	//Constructors
 	public FileDetails() {}
-	public FileDetails(int fileId, String fileName) 
+	public FileDetails( String fileName) 
 	{
-		this.fileId = fileId;
+		//this.fileId = fileId;
 		this.fileName = fileName;
 	}
 	

@@ -1,5 +1,6 @@
 package com.lti.core.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*
@@ -35,7 +37,8 @@ public class QuestionDetails
 {
 	//attributes for the entity
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name="qidGen",sequenceName="qid_seq",initialValue=1,allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="qidGen")
 	@Column(name="QUESTION_ID")
 	int questionId;
 	@Column(name="QUESTION")
@@ -47,78 +50,26 @@ public class QuestionDetails
 
 	//mapping attributes
 	//1)ExaminationDetails table exam_id
-	@OneToOne
+	@OneToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="EXAM_ID")
 	ExaminationDetails exam;
 
 	//2)File table 
-	@ManyToOne
+	@ManyToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="FILE_ID")
 	FileDetails fileDetails;
 	
 	//Constructors
 	public QuestionDetails() {}
 
-	public QuestionDetails(int questionId, String question, String correctOption,ExaminationDetails exam, FileDetails fileDetails) {
-		this.questionId = questionId;
+	public QuestionDetails(String question, String correctOption,ExaminationDetails exam, FileDetails fileDetails) {
+		//this.questionId = questionId;
 		this.question = question;
 		this.correctOption = correctOption;
 		this.exam = exam;
 		this.fileDetails = fileDetails;
 	}
-
-	//getters and setters
-	public int getQuestionId() {
-		return questionId;
-	}
-
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getCorrectOption() {
-		return correctOption;
-	}
-
-	public void setCorrectOption(String correctOption) {
-		this.correctOption = correctOption;
-	}
-
-	public String getDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
-
-	public ExaminationDetails getExam() {
-		return exam;
-	}
-
-	public void setExam(ExaminationDetails exam) {
-		this.exam = exam;
-	}
-
-	public FileDetails getFileDetails() {
-		return fileDetails;
-	}
-
-	public void setFileDetails(FileDetails fileDetails) {
-		this.fileDetails = fileDetails;
-	}
-	
-	
-	
-	
 	
 
 }
+

@@ -2,6 +2,7 @@ package com.lti.core.entities;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +23,9 @@ public class StudentDetails
 {
 	//Attributes for the entity
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="STUDENT_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int studentId;
+	int studentId;
 	@Column(name="FIRST_NAME")
 	String firstName;
 	@Column(name="LAST_NAME")
@@ -43,13 +44,13 @@ public class StudentDetails
 	String state;
 	
 	//Association Mapping
-	@OneToOne
+	@OneToOne( cascade=CascadeType.ALL)
 	@JoinColumn(name="LOGIN_ID")
-	LoginDetails login;
+	private LoginDetails login;
 	
 	//Constructors
 	public StudentDetails() {}
-	public StudentDetails( String firstName, String lastName, Date dateOfBirth, String gender,String email, long phoneNumber, String city, String state,LoginDetails login) 
+	public StudentDetails(String firstName, String lastName, Date dateOfBirth, String gender,String email, long phoneNumber, String city, String state,LoginDetails login) 
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -63,6 +64,12 @@ public class StudentDetails
 	}
 	
 	//Getters and Setters for the attributes
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

@@ -1,8 +1,12 @@
 package com.lti.core.entities;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*
@@ -11,11 +15,13 @@ This entity class will store login details for every student
 
 @Entity
 @Table(name="LOGIN")
+@SequenceGenerator(name="testSeq", initialValue=1, allocationSize=100)
 public class LoginDetails 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE )      // edit: has to be generated using db seq
 	@Column(name="LOGIN_ID")
-	int loginId;
+	int logintId;
 	@Column(name="USER_NAME")
 	String userName;
 	@Column(name="PASSWORD")
@@ -23,18 +29,17 @@ public class LoginDetails
 	
 	//Constructors
 	public LoginDetails() {}
-	public LoginDetails(int loginId, String userName, String password) {
-		this.loginId = loginId;
+	public LoginDetails(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
 	}
 	
 	//Getters and setters for attributes
 	public int getLoginId() {
-		return loginId;
+		return logintId;
 	}
 	public void setLoginId(int loginId) {
-		this.loginId = loginId;
+		this.logintId = loginId;
 	}
 	public String getUserName() {
 		return userName;
