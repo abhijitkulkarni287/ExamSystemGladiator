@@ -8,12 +8,22 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lti.core.daos.ExamDao;
+import com.lti.core.daos.FileDao;
+import com.lti.core.daos.QuestionsDao;
+import com.lti.core.entities.ExaminationDetails;
+import com.lti.core.entities.FileDetails;
 import com.lti.core.entities.QuestionDetails;
 
 public class AdminQuestionServiceImpl implements AdminQuestionService 
 {
-
+	@Autowired
+	private ExamDao examDao;
+	private QuestionsDao questionDao;
+	private FileDao fileDao;
+	
 	@Override
 	public void addQuestionsFromFile() 
 	{
@@ -74,6 +84,24 @@ public class AdminQuestionServiceImpl implements AdminQuestionService
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<ExaminationDetails> showExamList() 
+	{
+		return examDao.fetchExamDetails();
+	}
+
+	@Override
+	public void removeQuestionsFromFile(String fileName) 
+	{
+		questionDao.deleteQuestions(fileName);
+	}
+
+	@Override
+	public List<FileDetails> showFileList() 
+	{
+		return fileDao.fetchFileDetails();
 	}
 
 }
