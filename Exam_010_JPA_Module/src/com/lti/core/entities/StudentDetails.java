@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -19,6 +21,10 @@ from the registration page
 public class StudentDetails 
 {
 	//Attributes for the entity
+	@Id
+	@Column(name="STUDENT_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int studentId;
 	@Column(name="FIRST_NAME")
 	String firstName;
 	@Column(name="LAST_NAME")
@@ -38,14 +44,13 @@ public class StudentDetails
 	
 	//Association Mapping
 	@OneToOne
-	@JoinColumn(name="STUDENT_ID")
+	@JoinColumn(name="LOGIN_ID")
 	LoginDetails login;
 	
 	//Constructors
 	public StudentDetails() {}
-	public StudentDetails( String firstName, String lastName, Date dateOfBirth, String gender,String email, long phoneNumber, String city, String state) 
+	public StudentDetails( String firstName, String lastName, Date dateOfBirth, String gender,String email, long phoneNumber, String city, String state,LoginDetails login) 
 	{
-		//this.studentId = studentId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -54,15 +59,10 @@ public class StudentDetails
 		this.phoneNumber = phoneNumber;
 		this.city = city;
 		this.state = state;
+		this.login = login;
 	}
 	
 	//Getters and Setters for the attributes
-	/*public int getStudentId() {
-		return studentId;
-	}
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
-	}*/
 	public String getFirstName() {
 		return firstName;
 	}

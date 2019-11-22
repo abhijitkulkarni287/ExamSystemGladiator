@@ -14,8 +14,8 @@ This entity class will store login details for every student
 public class LoginDetails 
 {
 	@Id
-	@Column(name="STUDENT_ID")
-	int studentId;
+	@Column(name="LOGIN_ID")
+	int loginId;
 	@Column(name="USER_NAME")
 	String userName;
 	@Column(name="PASSWORD")
@@ -23,18 +23,18 @@ public class LoginDetails
 	
 	//Constructors
 	public LoginDetails() {}
-	public LoginDetails(int studentId, String userName, String password) {
-		this.studentId = studentId;
+	public LoginDetails(int loginId, String userName, String password) {
+		this.loginId = loginId;
 		this.userName = userName;
 		this.password = password;
 	}
 	
 	//Getters and setters for attributes
-	public int getStudentId() {
-		return studentId;
+	public int getLoginId() {
+		return loginId;
 	}
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
+	public void setLoginId(int loginId) {
+		this.loginId = loginId;
 	}
 	public String getUserName() {
 		return userName;
