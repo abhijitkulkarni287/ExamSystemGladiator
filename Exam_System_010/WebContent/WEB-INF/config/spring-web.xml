@@ -15,5 +15,9 @@ xmlns:context="http://www.springframework.org/schema/context"
     <property name="prefix" value="/WEB-INF/pages/" /> 
     <property name="suffix" value=".jsp" /> 
     </bean>
+    
+    <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
         
 </beans>

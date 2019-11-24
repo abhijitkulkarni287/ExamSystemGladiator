@@ -15,7 +15,7 @@ import com.lti.core.entities.ExaminationDetails;
 import com.lti.core.entities.FileDetails;
 import com.lti.core.services.AdminQuestionService;
 
-//http://localhost:9090/Exam_System_010/delete.hr
+//http://localhost:8082/Exam_System_010/upload.hr
 
 @Controller
 public class AdminController 
@@ -59,11 +59,17 @@ public class AdminController
 		return "DeletedStatus";
 	}
 	
-	//Test Method------------------------------------------------------------------------------------------------------------------------------
+	//Test Methods------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="uploadTest.hr")
 	public void uploadTest()
 	{
 		adminService.addQuestionsFromFile();
+	}
+	
+	@RequestMapping(value="fileUploadTest.hr")
+	public String uploadPage()
+	{
+		return "UploadSuccess";
 	}
 
 }

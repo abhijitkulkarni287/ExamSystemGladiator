@@ -29,7 +29,7 @@
 <c:forEach items="${examList}" var="exam">
 	<div class="card">
  		 <div class="container">
-   			 <h4><b>${exam.examName}</b></h4>  
+   			 <h4><b><a href="examManager.hr?examId=${exam.examId}">${exam.examName}</a></b></h4>  
   		</div>
   	</div>  			
 </c:forEach>
