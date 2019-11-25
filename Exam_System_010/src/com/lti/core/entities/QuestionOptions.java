@@ -3,6 +3,7 @@ package com.lti.core.entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class QuestionOptions
 	@Column(name="OPTIONS")
 	private String option;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="QUESTION_ID")
 	private QuestionDetails questionDetails;
 

@@ -1,16 +1,19 @@
 package com.lti.core.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.lti.core.entities.ExaminationDetails;
 import com.lti.core.entities.FileDetails;
+import com.lti.core.entities.Question;
 import com.lti.core.entities.QuestionDetails;
 import com.lti.core.entities.QuestionOptions;
 
@@ -41,9 +44,7 @@ public class QuestionsDaoImpl implements QuestionsDao
 		for(QuestionOptions o:optionList)
 		{
 			entityManager.persist(o);
-		}
-		
-		
+		}	
 	}
 
 	@Override
@@ -64,7 +65,30 @@ public class QuestionsDaoImpl implements QuestionsDao
 		
 		//FileDetails fileDetails = entityManager.find(FileDetails.class, fid);
 		//entityManager.remove(fileDetails);
-		
 	}
+	
+	
+	@Override
+	public List<QuestionDetails> fetchListQuestions(int examId)
+	{
+		String questionQueryString = "from QuestionDetails qd where qd.exam.examId=?1 and qd.deleted=null";
+		Query questionQuery = entityManager.createQuery(questionQueryString);
+		questionQuery.setParameter(1, examId);
+		List<QuestionDetails> questionList = (List<QuestionDetails>)questionQuery.getResultList();
+		return questionList;
+	}
+	
+	//will return list of options 
+		@Override
+		public List<String> fetchListOptions(int questionId)
+		{
+			String questionQueryString = "select q0.option from QuestionOptions q0 where q0.questionDetails.questionId=?1";
+			TypedQuery<String> questionQuery = entityManager.createQuery(questionQueryString,String.class);
+			questionQuery.setParameter(1, questionId);			
+			return questionQuery.getResultList();
+		}
+	
+	
+	
 
 }

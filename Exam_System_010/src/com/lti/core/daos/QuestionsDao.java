@@ -21,5 +21,12 @@ public interface QuestionsDao
 	
 	//2) Delete use case
 	public void deleteQuestions(String fileName);
+	
+	//3) Student Test use case
+	
+	//these two methods are required to populate data into Question object
+	public List<QuestionDetails> fetchListQuestions(int examId);
+	public List<String> fetchListOptions(int questionId);
+	
 
 }

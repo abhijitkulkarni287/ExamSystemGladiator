@@ -40,10 +40,4 @@ public class StudentController
 		return mAndV;
 	}
 	
-	
-	
-	
-	
-	
-	
 }
