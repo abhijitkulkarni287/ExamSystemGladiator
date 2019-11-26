@@ -38,6 +38,8 @@ p{font-size:20px;font-family:arial;text-align:center}
 <title>Registration Page</title>
 </head>
 <body>
+<a href = "login.hr">Existing User? Login here</a>
+<a href="home.hr">HOME</a>
 <p>REGISTRATION PAGE</p>
 <form action="registerStudent.hr" method="post">
 	<table align="center">
@@ -64,6 +66,15 @@ p{font-size:20px;font-family:arial;text-align:center}
 	</tr>
 	<tr>	
 		<td>STATE:</td><td><input type= "text" name="state"></td>
+	</tr>
+	<tr>
+		<td>Username:</td><td><input type= "text" name="username"></td>
+	</tr>
+	<tr>	
+		<td>Password:</td><td><input type= "password" name="password"></td>
+	</tr>
+	<tr>	
+		<td>Repeat Password:</td><td><input type= "password" name="passwordNA"></td>
 	</tr>
 	<tr>
 	<td colspan=2><input type="submit" value = "Register"></td>

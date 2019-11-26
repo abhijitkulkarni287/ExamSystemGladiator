@@ -42,5 +42,19 @@ public class StudentController
 	}
 	
 	//for submitting test and taking result
+	@RequestMapping("generateResult.hr")
+	public ModelAndView generateResult(@RequestParam("testScore") String testScore)
+	{
+		System.out.println(testScore);
+		ModelAndView mAndV = new ModelAndView();
+		mAndV.addObject("testScore", testScore);
+		mAndV.setViewName("Result");
+		return mAndV;
+		
+	}
+	
+	
+	
+	
 	
 }

@@ -25,7 +25,7 @@ public class LoginDetails
 	private int logintId;
 	@Column(name="USER_NAME")
 	private String userName;
-	@Column(name="PASSWORD")
+	@Column(name="USER_PASSWORD")
 	private String password;
 	
 	//Constructors

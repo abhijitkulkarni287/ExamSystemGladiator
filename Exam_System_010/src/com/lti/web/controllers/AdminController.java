@@ -67,7 +67,7 @@ public class AdminController
 	{
 		HttpSession session = request.getSession();
 		String path=(String)session.getAttribute("path");
-		adminService.addQuestionsFromFile(path);
+		
 		return "UploadSuccess";
 	}
 	

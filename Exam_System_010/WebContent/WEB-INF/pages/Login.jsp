@@ -5,7 +5,7 @@
 <head>
 <style>
 div.background {
-  background: url(pc2.jpg) repeat;
+  background: url(/Exam_System_010/pictures/pc2.jpg) repeat;
   background-size:cover;
   border: 2px solid black;
 }
@@ -25,40 +25,23 @@ div.transbox p {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
+<a href="home.hr">HOME</a>
 <div class="background">
   <div class="transbox">
  <h1 align="center" >Online Test Application</h1>
  <hr width=480 >
- <form:form commandName="user" action="login.html" >
+ <form commandName="user" action="loginValidate.hr" >
  <table align="center">
   <tr>
-    <td><form:label path="userName" >User Name:</form:label></td>
-    <td><input type="text" name="userName" maxlength="30"/>
-    <td>
-     <form:input path="userName"/>     
-    </td>
+    <td><label>User Name:</label></td>
+    <td><input type="text" name="username" maxlength="30"/></td>
   </tr>
   <tr>
-    <td></td>
-    <td>
-      <FONT color="red"><form:errors path="userName"></form:errors></FONT>
-    </td>
-  </tr>
-  <tr>
-    <td><form:label path="password"  >Password:</form:label></td>
+    <td><label>Password:</label></td>
     <td><input type="password" name="password" maxlength="30"/>
-    
-    <td>
-      <form:password path="password" />      
-    </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-      <FONT color="red"><form:errors path="password"></form:errors></FONT>
     </td>
   </tr>
   <tr>
@@ -69,7 +52,7 @@ div.transbox p {
     </td>
   </tr> 
  </table>
- </form:form> 
+ </form> 
 
 </body>
 </html>

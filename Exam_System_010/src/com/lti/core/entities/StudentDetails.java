@@ -1,6 +1,6 @@
 package com.lti.core.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,13 +33,13 @@ public class StudentDetails
 	@Column(name="LAST_NAME")
 	private String lastName;
 	@Column(name="DOB")
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	@Column(name="GENDER")
 	private String gender;
 	@Column(name="EMAIL")
 	private String email;
 	@Column(name="PHONE")
-	private int phoneNumber;
+	private String phoneNumber;
 	@Column(name="CITY")
 	private String city;
 	@Column(name="STUDENT_STATE")
@@ -52,7 +52,7 @@ public class StudentDetails
 	
 	//Constructors
 	public StudentDetails() {}
-	public StudentDetails(String firstName, String lastName, Date dateOfBirth, String gender,String email, int phoneNumber, String city, String state,LoginDetails login) 
+	public StudentDetails(String firstName, String lastName, String dateOfBirth, String gender,String email, String phoneNumber, String city, String state,LoginDetails login) 
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -84,10 +84,10 @@ public class StudentDetails
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public String getGender() {
@@ -102,10 +102,10 @@ public class StudentDetails
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public LoginDetails getLogin() {

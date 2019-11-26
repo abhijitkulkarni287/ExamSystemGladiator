@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -34,11 +35,11 @@ public class QuestionRestController
 	
 	//we will take exam Id and return populated data
 	@RequestMapping(value="fetchQuestion.hr",method=RequestMethod.GET,produces="application/json")
-	public String fetchListQuestion(@PathVariable int examId)
+	public String fetchListQuestion(@RequestParam("examId") int examId)
 	{		
 		System.out.println(examId);
 		//This will be taken from service layer
-		List<Question> questionList = testService.showQuestionList(78);
+		List<Question> questionList = testService.showQuestionList(examId);
 		Gson gson = new Gson();
 		return gson.toJson(questionList);
 	}

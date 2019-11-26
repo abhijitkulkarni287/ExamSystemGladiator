@@ -11,7 +11,7 @@ import com.lti.core.entities.FileDetails;
 public interface AdminQuestionService 
 {
 	//Methods for adding and deleting questions
-	public void addQuestionsFromFile(String path);
+	public void addQuestionsFromFile(String path,String fileName);
 	public void removeQuestionsFromFile(String fileName);
 	
 	//Methods for returning lists

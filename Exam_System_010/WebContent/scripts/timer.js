@@ -1,13 +1,10 @@
-/**
- * 
- */
-/**
- * 
- */
 // Set the date we're counting down to
 	//var countDownDate = new Date("Jan 5, 2021 12:53:50").getTime();
-	var countDownDate = new Date().getTime()+(1000 * 60)*40;
+	var countDownDate = new Date().getTime()+(1000 * 60)*2;
 	// Update the count down every 1 second
+	
+	function startExam(){
+		
 	var x = setInterval(function() {
 
   	// Get today's date and time
@@ -28,7 +25,16 @@
     
   // If the count down is over, write some text 
   if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    stop(x);
   }
-}, 1000);
+}, 1000); 
+}
+function stop(ref){
+
+	console.log("Time out");
+    document.getElementById("demo").innerHTML = "EXAM OVER";
+    generateTestScore();
+    document.forms.testOver.submit();
+	clearInterval(ref);
+}    
+
