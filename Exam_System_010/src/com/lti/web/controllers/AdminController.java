@@ -2,6 +2,8 @@ package com.lti.web.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.text.html.FormSubmitEvent.MethodType;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,15 +63,13 @@ public class AdminController
 	
 	//Test Methods------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="uploadTest.hr")
-	public void uploadTest()
+	public String uploadTest(HttpServletRequest request)
 	{
-		adminService.addQuestionsFromFile();
-	}
-	
-	@RequestMapping(value="fileUploadTest.hr")
-	public String uploadPage()
-	{
+		HttpSession session = request.getSession();
+		String path=(String)session.getAttribute("path");
+		adminService.addQuestionsFromFile(path);
 		return "UploadSuccess";
 	}
-
+	
+	
 }

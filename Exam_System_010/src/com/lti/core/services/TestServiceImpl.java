@@ -30,6 +30,7 @@ public class TestServiceImpl implements TestService {
 			 Question question = new Question();
 			 question.setQuestionId(q.getQuestionId());
 			 question.setQuestion(q.getQuestion());
+			 question.setCorrectOption(q.getCorrectOption());
 			 List<String> options = getOptionList(q.getQuestionId());
 			 System.out.println("Found "+options.size()+" options");
 			 question.setOptions(options);

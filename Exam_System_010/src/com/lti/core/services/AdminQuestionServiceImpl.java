@@ -33,19 +33,19 @@ public class AdminQuestionServiceImpl implements AdminQuestionService
 	
 	@Override
 	@Transactional
-	public void addQuestionsFromFile() 
+	public void addQuestionsFromFile(String path) 
 	{
 		List<QuestionDetails> questionList = new ArrayList<QuestionDetails>();
 		List<QuestionOptions> questionOptionsList= new ArrayList<QuestionOptions>();	
-		
-		FileDetails fileDetails = new FileDetails( "abaaaaaac.xlsx");
-		ExaminationDetails examDetails = new ExaminationDetails(78, "web techology", 60, 40);
+		System.out.println(path);
+		FileDetails fileDetails = new FileDetails( "abaaac.xlsx");
+		ExaminationDetails examDetails = new ExaminationDetails(113, "dbms", 60, 40);
 		
 		//1) Extraction of data from excel file
 		//excel file location
 		try {
 			
-		String filePath="C:/Users/AE103_PC2/Desktop/AB NOTES/EmployeeDetails.xlsx";
+		String filePath=path;
 		FileInputStream file = new FileInputStream(filePath);
 		//getting workbook
 		XSSFWorkbook questionWorkbook = new XSSFWorkbook(file);

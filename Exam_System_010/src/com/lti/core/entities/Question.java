@@ -16,7 +16,7 @@ public class Question
 		String question;
 		List<String> options;
 	//needed for front end, no need to populate this
-		String selectedOption;
+		String correctOption;
 	
 	//Constructors------------------------------------------------------------------------------------------------------------------------
 		public Question() {}
@@ -32,8 +32,8 @@ public class Question
 		public void setQuestion(String question){this.question = question;}
 		public List<String> getOptions(){return options;}
 		public void setOptions(List<String> options) {this.options = options;}
-		public String getSelectedOption(){return selectedOption;}
-		public void setSelectedOption(String selectedOption){this.selectedOption = selectedOption;}
+		public String getCorrectOption(){return correctOption;}
+		public void setCorrectOption(String selectedOption){this.correctOption = selectedOption;}
 		
 	
 }
